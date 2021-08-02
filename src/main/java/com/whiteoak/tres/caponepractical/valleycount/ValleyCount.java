@@ -13,6 +13,7 @@ import java.util.stream.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static java.lang.Math.abs;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
@@ -42,9 +43,32 @@ public class ValleyCount {
 
     public int doWork(int steps, String path) {
     // Write your code here
-    	
+    int steps_remaining = steps;
+    int height = 0;
+    boolean in_valley = false;
+    int valleys_traversed = 0;
+    char down_char = "D".charAt(0);
+
+		for (char step: path.toCharArray()) {
+			if (step == down_char) {
+				height -= 1;
+				if (!in_valley && height == -1) {
+					in_valley = true;
+				}
+			}
+			else {
+				height += 1;
+				if (in_valley && height == 0) {
+					in_valley = false;
+					valleys_traversed += 1;
+				}
+			}
+			steps_remaining -=1;
+			if (abs(height)> steps_remaining){break;}
+
+		}
+		return valleys_traversed;
     // https://www.hackerrank.com/challenges/counting-valleys/problem
-    	return 2;
     }
 
 
