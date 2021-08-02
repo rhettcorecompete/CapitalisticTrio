@@ -43,7 +43,21 @@ public class SockMerchant {
 
     public int doWork(int n, List<Integer> ar) {
     // Write your code here
-    	
+		int pairs = 0;
+		HashMap<Integer,Double> pairsMap = new HashMap<>();
+		for (int i=0;i<n;i++){
+			int sock = ar.get(i);
+			if (pairsMap.containsKey(sock)){
+				pairsMap.put(sock,pairsMap.get(sock)+.5);
+			}
+			else{
+				pairsMap.put(sock,.5);
+			}
+		}
+		for (double i:pairsMap.values()){
+			pairs+=(int)i;
+		}
+		return pairs;
     	//https://www.hackerrank.com/challenges/sock-merchant/problem
     	return 2;
     }
