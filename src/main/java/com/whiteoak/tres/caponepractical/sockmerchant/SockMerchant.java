@@ -59,7 +59,6 @@ public class SockMerchant {
 		}
 		return pairs;
     	//https://www.hackerrank.com/challenges/sock-merchant/problem
-    	return 2;
     }
 
     public void runAlgorithm() throws IOException {
